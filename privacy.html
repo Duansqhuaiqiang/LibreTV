@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>炫彩时间显示</title>
+  <style>
+    body {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .time {
+      font-size: 4em;
+      font-weight: bold;
+      background: linear-gradient(270deg, #ff0000, #ff9900, #33cc33, #3399ff, #cc33ff, #ff0000);
+      background-size: 1000% 1000%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="time" id="clock">加载中...</div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString();
+      document.getElementById("clock").textContent = timeStr;
+    }
+
+    updateTime(); // 初次加载
+    setInterval(updateTime, 1000); // 每秒更新
+  </script>
+</body>
+</html>
